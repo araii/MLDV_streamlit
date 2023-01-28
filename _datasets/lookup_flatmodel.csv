@@ -1,0 +1,22 @@
+flat_model,ref
+Model A,flat_model_Common
+Improved,flat_model_Common
+New Generation,flat_model_Common
+Standard,flat_model_Common
+Simplified,flat_model_Common
+Apartment,flat_model_Premium
+Model A2,flat_model_Common
+Multi Generation,flat_model_Common
+3Gen,flat_model_Common
+2-room,flat_model_Common
+DBSS,flat_model_Premium
+Type S1,flat_model_Premium
+Type S2,flat_model_Premium
+Premium Apartment,flat_model_Premium
+Terrace,flat_model_DoubleStorey
+Premium Apartment Loft,flat_model_DoubleStorey
+Improved-Maisonette,flat_model_DoubleStorey
+Premium Maisonette,flat_model_DoubleStorey
+Maisonette,flat_model_DoubleStorey
+Model A-Maisonette,flat_model_DoubleStorey
+Adjoined flat,flat_model_Adjoined
