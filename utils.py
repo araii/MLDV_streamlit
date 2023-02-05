@@ -87,9 +87,9 @@ def dist_from_location(house, location):
     return distance
 
     
-def _max_width_():
+def _max_width_(prcnt_width):
     import streamlit as st
-    max_width_str = f"max-width: 2000px;"
+    max_width_str = f"max-width: {prcnt_width}%;"
     st.markdown(
         f"""
     <style>

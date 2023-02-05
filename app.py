@@ -263,17 +263,14 @@ ref_flats = tbl_flats[['block','street_name','storey_range','town','floor_area_s
                     'flat_model','flat_type','lease_commence_date','POSTAL','resale_price']]
 ref_flats['address']=ref_flats['block']+" "+ref_flats['street_name']
 #====================================================================================
+_max_width_(75)
 
-_max_width_()
-
-st.write(st.__version__)
 st.title('HDB Resale Price Prediction')
-
+st.write(st.__version__)
 # st.sidebar.write(
 #     f"This app shows how a Streamlit app can interact easily with a to read or store data."
 # )
 with st.sidebar:    
-    #
     st.subheader('Enter address or postal code')
     addrType = st.radio('',('Address', 'Postal Code'), horizontal=True,
                         label_visibility='collapsed')#
