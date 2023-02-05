@@ -26,32 +26,6 @@ def find_postal(add):
 def find_nearest(house, amenity, radius=2):
     
     from geopy.distance import geodesic
-
-    results = pd.DataFrame(data=None)
-    stns = []
-    ndist = []
-    # first column must be address
-    for index,flat in enumerate(house.iloc[:,0]):
-        
-        # 2nd column must be latitude, 3rd column must be longitude
-        flat_loc = (house.iloc[index,1],house.iloc[index,2])
-
-        for ind, eachloc in enumerate(amenity.iloc[:,0]):
-            stns.append(eachloc)  #--edit
-            amenity_loc = (amenity.iloc[ind,1], amenity.iloc[ind,2])
-            distance = geodesic(flat_loc, amenity_loc)
-            distance = float(str(distance)[:-3])
-            ndist.append(distance) 
-    #--edit
-    results['amenity']=stns
-    results['ndist']=ndist
-    results = results.sort_values('ndist')
-    return results.iloc[[0]] #results, amenity_2km
-
-
-def find_nearest_test(house, amenity, radius=2):
-    
-    from geopy.distance import geodesic
     #--edit
     results = pd.DataFrame(data=None)
     stns = []
@@ -127,14 +101,13 @@ def _max_width_():
         unsafe_allow_html=True,
     )
     
-
     
 def draw_map(data, lat, lon, zoom, amenities_toggle):
     
-    if amenities_toggle[0]: 
+    if amenities_toggle[0]:       
         mrts = data[data['type']=='MRT'].drop(['selected_flat'],axis=1)
     else: 
-        mrt = None
+        mrts = None
     if amenities_toggle[1]: 
         schools = data[data['type']=='School'].drop(['selected_flat'],axis=1)
     else: 
@@ -144,6 +117,10 @@ def draw_map(data, lat, lon, zoom, amenities_toggle):
     else: 
         fdctrs = None
     if amenities_toggle[3]: 
+        cctrs = data[data['type']=='Childcare'].drop(['selected_flat'],axis=1)
+    else: 
+        cctrs = None
+    if amenities_toggle[4]: 
         hdb = None
     else: 
         hdb = data[data['type']=='HDB']
@@ -183,6 +160,14 @@ def draw_map(data, lat, lon, zoom, amenities_toggle):
                 data=fdctrs,
                 get_position='[LONGITUDE, LATITUDE]',
                 get_color='[204, 0, 204, 160]',
+                pickable=True,
+                get_radius=50,
+            ),
+            pdk.Layer( # ccentre - blue
+                'ScatterplotLayer',
+                data=cctrs,
+                get_position='[LONGITUDE, LATITUDE]',
+                get_color='[0, 102, 255, 160]',
                 pickable=True,
                 get_radius=50,
             ),
