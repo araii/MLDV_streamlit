@@ -272,7 +272,7 @@ st.write(st.__version__)
 # )
 with st.sidebar:    
     st.subheader('Enter address or postal code')
-    addrType = st.radio('',('Address', 'Postal Code'), horizontal=True,
+    addrType = st.radio(' ',('Address', 'Postal Code'), horizontal=True,
                         label_visibility='collapsed')#
     
     # LAYOUT - USER INPUT SECTION 
