@@ -38,7 +38,8 @@ st.set_page_config(page_title="HDB Resale Price", layout="centered")
 #==========================================================================================
 # FUNCTIONS
 
-@st.cache 
+# @st.cache 
+@st.cache_data
 def load_data(filepath):
 	return pd.read_csv(filepath)
 
