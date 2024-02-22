@@ -260,7 +260,7 @@ scaler = joblib.load('scaler.pkl')
 
 
 ref_flats = tbl_flats[['block','street_name','storey_range','town','floor_area_sqm','year',
-                    'flat_model','flat_type','lease_commence_date','POSTAL','resale_price']]
+                    'flat_model','flat_type','lease_commence_date','POSTAL','resale_price']].copy()
 ref_flats.loc[:, 'address']=ref_flats['block']+" "+ref_flats['street_name']
 #====================================================================================
 _max_width_(75)
