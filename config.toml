@@ -1,6 +1,3 @@
 [theme]
-base="light"
-primaryColor="#4bb0ff"
-backgroundColor="#f3eeee"
-[server]
-port = 8501
+base="dark"
+

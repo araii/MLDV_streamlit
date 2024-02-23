@@ -124,7 +124,7 @@ def getMapInfo():
     sel_flat_coord['selected_flat'] = [1]
     # flats dataframe from .csv
     flats = tbl_flats[['LATITUDE','LONGITUDE','block',
-                       'street_name','POSTAL','year']]
+                       'street_name','POSTAL','year']].copy()
     flats['address']=flats['block']+" "+flats['street_name']+" "+flats['POSTAL'].map(lambda x: str(x))
     flats = flats.drop_duplicates()
     # take only from 2020 onwards
