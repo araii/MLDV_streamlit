@@ -265,7 +265,7 @@ ref_flats = tbl_flats[['block','street_name','storey_range','town','floor_area_s
                     'flat_model','flat_type','lease_commence_date','POSTAL','resale_price']].copy()
 ref_flats.loc[:, 'address']=ref_flats['block']+" "+ref_flats['street_name']
 #====================================================================================
-_max_width_(75)
+_max_width_(100)
 
 st.title('HDB Resale Price Prediction')
 st.write(st.__version__)
