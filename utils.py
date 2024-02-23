@@ -49,9 +49,9 @@ def find_nearest(house, amenity, radius=2):
             
             if distance <= radius: # compute number of amenities in 2km radius
                 flat_amenity[3] += 1
-                amenity_2km = pd.concat(amenity_2km, pd.DataFrame({'name':[eachloc], 
+                amenity_2km = pd.concat([amenity_2km, pd.DataFrame({'name':[eachloc], 
                                                                'lat':[amenity_loc[0]], 
-                                                               'lon':[amenity_loc[1]]}))
+                                                               'lon':[amenity_loc[1]]})])
                 # amenity_2km = amenity_2km.append(pd.DataFrame({'name':[eachloc], 
                 #                                                'lat':[amenity_loc[0]], 
                 #                                                'lon':[amenity_loc[1]]}))
