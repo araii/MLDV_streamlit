@@ -38,7 +38,8 @@ st.set_page_config(page_title="HDB Resale Price", layout="centered")
 #==========================================================================================
 # FUNCTIONS
 
-@st.cache 
+# @st.cache_data
+@st.cache_data
 def load_data(filepath):
 	return pd.read_csv(filepath)
 
@@ -145,10 +146,11 @@ def getMapInfo():
     all_bldgs = pd.concat([map_2km, flats]).reset_index()
     #
     cb1, cb2, cb3, cb4, cb5 = st.columns(5)
-    show_mrt = cb1.checkbox('MRT Stations',True)
-    show_schools = cb2.checkbox('Schools',True)
-    show_fdctrs = cb3.checkbox('Food Centres',True)
-    show_cctrs = cb4.checkbox('Childcare', True)
+
+    show_mrt = cb1.checkbox(label=":orange[MRT Stations]",value=True)  # MRT Stations label_visibility="collapsed"
+    show_schools = cb2.checkbox(':green[Schools]',True)
+    show_fdctrs = cb3.checkbox(':violet[Food Centres]',True)
+    show_cctrs = cb4.checkbox(':blue[Childcare]', True)
     hide_hdb = cb5.checkbox('Hide HDBs',False)    
     #
     amenities_toggle= [show_mrt, show_schools, show_fdctrs, show_cctrs, hide_hdb] 
@@ -184,7 +186,7 @@ def getAddrLoc(input_addr):
             dist_cty]
 
 
-def getAddrInfo(input_addr):  #560331
+def getAddrInfo(input_addr):  # 560331
     if addrType == "Address":
         inf = ref_flats[ref_flats['address']==input_addr.upper()] 
     else:
@@ -341,6 +343,7 @@ info = info[info['floor_area_sqm']==int(floor_area)]
 st.write(info)
 
 st.subheader('Flat Location & Amenities')
+st.write("**Please note:** Amenities data are pulled from external sources and may be outdated.")
 all_coords = getMapInfo()
 # st.write(all_coords)
 
