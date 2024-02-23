@@ -44,12 +44,12 @@ def find_nearest(house, amenity, radius=2):
             amenity_loc = (amenity.iloc[ind,1], amenity.iloc[ind,2])
             distance = geodesic(flat_loc, amenity_loc)
             distance = float(str(distance)[:-3])
-            stns.append(eachloc)  #--edit
-            ndist.append(distance) 
+            stns.concat(eachloc)  #--edit
+            ndist.concat(distance) 
             
             if distance <= radius: # compute number of amenities in 2km radius
                 flat_amenity[3] += 1
-                amenity_2km = amenity_2km.append(pd.DataFrame({'name':[eachloc], 
+                amenity_2km = amenity_2km.concat(pd.DataFrame({'name':[eachloc], 
                                                                'lat':[amenity_loc[0]], 
                                                                'lon':[amenity_loc[1]]}))
             if distance < flat_amenity[2]: # find nearest amenity
